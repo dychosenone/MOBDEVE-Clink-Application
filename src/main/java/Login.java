@@ -1,9 +1,12 @@
+import com.google.gson.annotations.SerializedName;
+
 public class Login {
 
     private final String username;
     private final String password;
 
     private String userId;
+    private String accessToken;
     private String message;
 
     Login (String username, String password) {
@@ -19,5 +22,9 @@ public class Login {
 
     public String getMessage () {
         return this.message;
+    }
+
+    public String getAccessToken () {
+        return this.accessToken;
     }
 }

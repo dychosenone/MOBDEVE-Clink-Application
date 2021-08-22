@@ -4,10 +4,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
+import retrofit2.http.*;
 
 public interface RetrofitInterface {
 
@@ -15,23 +12,30 @@ public interface RetrofitInterface {
     Call<Login> executeLogin(@Body Login login);
 
     @GET("/logout")
-    Call<Login> executeLogout();
+    Call<Login> executeLogout(@Header("Authorization") String accessToken);
 
     @POST("/register")
     Call<Register> executeRegister(@Body Register register);
 
-    /*
-    @PUT("/updateProfile")
-    Call<UpdateProfile> executeUpdateProfile(@Body UpdateProfile updateprofile);
+    @GET("/profile")
+    Call<Profile> executeGetProfile(@Header("Authorization") String accessToken);
 
+    @PUT("/profile")
+    Call<Profile> executeEditProfile(@Header("Authorization") String accessToken, @Body Profile profile);
+
+    @PUT("/changePassword")
+    Call<Profile> executeChangePassword(@Header("Authorization") String accessToken, @Body Profile profile);
+
+    /*
     @PUT("/changePassword")
     Call<ChangePassword> executeChangePassword(@Body ChangePassword changepassword);
 
-    @GET("/viewProfile")
-    Call<ViewProfile> executeViewProfile(@Body ViewProfile viewprofile);
 
+    @POST("/postRecipe")
+    Call<PostRecipe> executePostRecipe(@Body PostRecipe postRecipe);
 
-    @PUT("/updateProfile")
-    Call<UpdateProfile> executeUpdateProfile(@Body HashMap<String, String> map);
+    @DELETE("/deleteRecipe")
+    Call<DeleteRecipe> executeDeleteRecipe(@Body DeleteRecipe deleteRecipe");
+
     */
 }
