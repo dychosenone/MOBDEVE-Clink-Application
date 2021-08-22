@@ -46,4 +46,20 @@ public class APIHelper {
         });
     }
 
+    public void logout () {
+        Call<Login> call = retrofitInterface.executeLogout();
+
+        call.enqueue(new Callback<Login>() {
+            @Override
+            public void onResponse(Call<Login> call, Response<Login> response) {
+                
+            }
+
+            @Override
+            public void onFailure(Call<Login> call, Throwable t) {
+
+            }
+        });
+    }
+
 }
